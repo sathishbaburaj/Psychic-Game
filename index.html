@@ -29,13 +29,13 @@
         var options = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",];
         // checking key pressed is in the options array or not
 		if (options.indexOf(userGuess) > -1) {
-// checking if user guess matches with computer guess then increase wins by 1 and reduce the number of guess by 1 and resetting the array of guessed letters
+// checking if user guess matches with computer guess then increase wins by 1 and decrease the number of guess by 1 and resetting the array of guessed letters
 			if (userGuess === computerGuess) {
 				wins++;
 				numGuesses = 15;
 				guessChoices = [];
 			}
-//  if user guess doesn't matche with computer guess then increase lossed by 1 and reduce the number of guess by 1 and pushing  guessed letters into guessChoices array
+//  if user guess doesn't matche with computer guess then increase losses by 1 and decrease the number of guess by 1 and pushing  guessed letters into guessChoices array
 
 			if (userGuess != computerGuess) {
 				numGuesses--;
@@ -47,6 +47,22 @@
 				numGuesses = 15;
 				losses++;
 				guessChoices = [];
+            }
+// displaying the results
+			var display =
+				"<h1> The Psychic Game </h1>" +
+				"<p>Guess what letter I'm thinking of!</p>" +
+				"<p>Wins: " + wins + "</p>" +
+				"<p>Losses: " + losses + "</p>" +
+				"<p>Guesses Left: " + numGuesses + "</p>" +
+				"<p>Your Guesses so far: " + guessChoices.join(", ") + "</p>";
+
+			document.querySelector("#psychic").innerHTML =display;
+			
+
+
+		}
+	};
 
 
 </script>
