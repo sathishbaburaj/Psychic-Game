@@ -5,29 +5,37 @@ var wins = 0;
 var losses = 0;
 var numGuesses = 15;
 var guessChoices = [];
+var chosenLetter = computerGuesses[Math.floor(Math.random() * computerGuesses.length)];
 
 // creating function to play the game
 
 document.onkeyup = function (event) {
 
+
+
     // placing the key pressed in the userGuess variable
     var userGuess = event.key;
 
     // generating a random alphabet from array of computerGuesses
-    var computerGuess = computerGuesses[Math.floor(Math.random() * computerGuesses.length)];
+
+    console.log(chosenLetter);
+
+
     //creating a variable to select possible options for alphabet also doen't count if user presses any other key
-    var options =  computerGuesses.slice();
+    var options = computerGuesses.slice();
     // checking key pressed is in the options array or not
     if (options.indexOf(userGuess) > -1) {
         // checking if user guess matches with computer guess then increase wins by 1 and decrease the number of guess by 1 and resetting the array of guessed letters
-        if (userGuess === computerGuess) {
+        if (userGuess === chosenLetter) {
             wins++;
             numGuesses = 15;
             guessChoices = [];
+            chosenLetter = computerGuesses[Math.floor(Math.random() * computerGuesses.length)];
+
         }
         //  if user guess doesn't matche with computer guess then increase losses by 1 and decrease the number of guess by 1 and pushing  guessed letters into guessChoices array
 
-        if (userGuess != computerGuess) {
+        if (userGuess != chosenLetter) {
             numGuesses--;
             guessChoices.push(userGuess);
         }
@@ -37,6 +45,8 @@ document.onkeyup = function (event) {
             numGuesses = 15;
             losses++;
             guessChoices = [];
+            chosenLetter = computerGuesses[Math.floor(Math.random() * computerGuesses.length)];
+            console.log(chosenLetter);
         }
         // displaying the results
         var display =
